@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <%- include('partials/head.ejs') %>
+</head>
+<body>
+
+    <%- include('partials/header.ejs')%>
+
+    <section class="container">
+        <%- include('partials/navbar.ejs') %>
+        <article class="content">
+            <h1>Posts</h1>
+            <div class="posts">
+                <% posts.forEach((item) => { %><!--É preciso abrir e fechar o ejs na primeira e última linha, para o programa interpretar que se trata de um HTML o que está contido.-->
+                    <div class="post">
+                        <h3><%= item.title %></h3>
+                        <p><%= item.text %></p>
+
+                        <% if(item.stars){ %>
+                            <% for( let index = 0; index < item.stars; index++ ) { %>  
+                                <img src="/images/star.png" alt="Star" width="20">
+                            <% } %>
+                        <% } %>
+                    </div>
+                <% }) %>
+            </div>
+        </article>
+    </section>
+
+    <%- include('partials/footer.ejs') %>
+
+    <%- include('partials/foot.ejs') %>
+</body>
+</html>
